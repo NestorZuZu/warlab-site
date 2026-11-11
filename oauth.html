@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>War Lab - Sign-in</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Sign-in relay for War Lab's own publishing tool. Meta only redirects sign-ins to https pages, so it sends the
+    // one-time code here and this page hands it to the tool waiting on this computer (localhost:8765). The code is
+    // useless without the tool's app secret, which never leaves that computer.
+    (function () {
+      var q = window.location.search || "";
+      if (/[?&](code|error)=/.test(q)) window.location.replace("http://localhost:8765/callback" + q);
+    })();
+  </script>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <img src="logo.png" alt="War Lab logo">
+      <a class="brand" href="./">War Lab</a>
+      <nav>
+        <a href="./">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Finishing sign-in…</h1>
+    <p>This page passes a sign-in back to War Lab's publishing tool on your computer.</p>
+    <p class="muted">If nothing happens, the tool isn't waiting for a sign-in right now: start the sign-in again from the tool.</p>
+  </main>
+  <footer>
+    <div class="bar">
+      <span>© War Lab</span>
+      <span><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></span>
+    </div>
+  </footer>
+</body>
+</html>
